@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 public class SyntaxTypesVariables {
 
     public static void main(String[] args) {
@@ -49,7 +52,12 @@ public class SyntaxTypesVariables {
             System.out.println("Whoops");
         }*/
 
+        Scanner scannerVariable = new Scanner(System.in);
 
+        System.out.print("Enter something");
+        String userInput = scannerVariable.next();
+
+        System.out.println("You entered: --> \"" + userInput + "\" <--");
 
     }
 
