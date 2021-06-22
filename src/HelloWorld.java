@@ -41,6 +41,7 @@ public class HelloWorld {
 //        float myNumber = 3.14; //Says that myNumber has already been defined as a variable
         //Can possibly use casting for implicit and explicit casting
         float myNumberAlpha = myNumber; //implicit casting
+        myNumberAlpha = 3.14F;
         float myNumberBeta = (float) myNumber; //explicit casting
         System.out.println(myNumberAlpha);
         System.out.println(myNumberBeta);
@@ -48,11 +49,11 @@ public class HelloWorld {
 
         //9. Copy and paste the following code blocks one at a time and execute them
         int x = 5;
-        System.out.println(x++);
+        System.out.println(x++); //POST-INCREMENT  Value increment AFTER it is evaluated (logged)
         System.out.println(x);
 
         int y = 5;
-        System.out.println(++y);
+        System.out.println(++y); //PRE-INCREMENT - Value will increment before evaluation
         System.out.println(y);
 
         //10. What is the difference between the above code blocks? Explain why the code outputs what it does.
