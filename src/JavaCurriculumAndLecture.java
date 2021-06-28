@@ -58,9 +58,27 @@ public class JavaCurriculumAndLecture {
 //        System.out.println(myString);
 
         //using while loop and boolean method .hasNext()
-        while (scanMan.hasNext()){ //
-            String word = scanMan.next();
-            System.out.println(word);
-        }
+//        while (scanMan.hasNext()){ //
+//            String word = scanMan.next();
+//            System.out.println(word);
+//        }
+
+        //More Lecture Notes 06/22/21
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("PLease enter a number:");
+        int num = sc.nextInt();
+        System.out.println(num);
+
+        sc.useDelimiter("\n");
+        System.out.print("Type a Sentence");
+        sc.nextLine(); // this is a way to cheese the .nextLine() in 'sentence' to read a new input instead of taking the return key when entering 'num'
+        String sentence = sc.nextLine();
+        System.out.println(sentence);
+
+
+        //Delimiter is the symbol we use to divide something, kind of like using split()
+        //Anything you System.out will not be read by Scanner Stream
     }
 }
