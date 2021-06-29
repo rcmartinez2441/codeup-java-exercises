@@ -91,20 +91,20 @@ public class MethodsLecture {
         System.out.println("Tell us about yourself? In no particular order: Age, Name, Any Pets? (true/false)");
         String userInput1 = scanner.next();
         checkInput(userInput1);
-
-
     }
 
     public static void checkInput (String input) {
-        if (input.toUpperCase().equals("TRUE") || input.toUpperCase().equals("FALSE") ){
-            boolean inputType = Boolean.parseBoolean(input);
-            aboutMe(inputType);
-        } else if ( Double.isNaN(Double.parseDouble(input)) ){
-            int userType = Integer.parseInt(input);
-            aboutMe(userType);
-        } else {
-            aboutMe(input);
-        }
+        int test = Integer.valueOf(input);
+        System.out.println(test);
+//        if (input.equalsIgnoreCase("TRUE") || input.equalsIgnoreCase("FALSE") ){
+//            boolean inputType = Boolean.parseBoolean(input);
+//            aboutMe(inputType);
+//        } else if ( Double.isNaN(input) ){
+//            int userType = Integer.parseInt(input);
+//            aboutMe(userType);
+//        } else {
+//            aboutMe(input);
+//        }
     }
 
     public static String aboutMe (String name){
@@ -121,4 +121,9 @@ public class MethodsLecture {
         System.out.println("Pets: " + pets);
         return pets;
     }
+
+
+
+    //Passing by value, is like passing copy of an object, we are going to grab the value and not change the  original value
+    // passing by reference you are passing the original value and changing the origina value
 }
