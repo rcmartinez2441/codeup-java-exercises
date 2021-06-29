@@ -1,3 +1,5 @@
+import java.util.Locale;
+import java.util.Scanner;
 public class MethodsLecture {
     public static void main(String[] args) {
         //***LEARNING METHODS***
@@ -5,9 +7,11 @@ public class MethodsLecture {
 //        System.out.println(nbaTeams("The Spurs"));
 
 
-        System.out.println(profile("raul", "martinez"));
-        System.out.println(profile(26));
-        System.out.println(profile("Better to live a life of what ifs than a life of oh wells"));
+//        System.out.println(profile("raul", "martinez"));
+//        System.out.println(profile(26));
+//        System.out.println(profile("Better to live a life of what ifs than a life of oh wells"));
+
+        createScanner();
     }
     //Syntax
     //'public' - whether or not this method will be visible for other classes
@@ -61,15 +65,60 @@ public class MethodsLecture {
     //        100 years old!"
     //      -accepts: your favorite quote. returns: "your fave quote"
 
-    public static String profile (String first, String last){
-        return "Hello " + first + " " + last;
+//    public static String profile (String first, String last){
+//        return "Hello " + first + " " + last;
+//    }
+//
+//    public static String profile (int age){
+//        return "That's crazy, you dont look like " + age;
+//    }
+//    public static String profile(String quote){
+//        return quote;
+//    }
+
+    //** 06/29/21 ***
+    // Warm-Up
+    //    WARMUP
+//    TODO: prompt a user to tell us about themselves (age, name, if
+//     they have any pets (true/false). Using method overloading, create
+//     methods that will return the first fact they told us about
+//     themselves. ex: I can input: 18 -- Laura -- false in which case I
+//     expect you to return: 18. but if I tell you my name first: Laura --
+//     false -- 18. I expect you to return "Laura" ... etc.
+    public static void createScanner () {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Tell us about yourself? In no particular order: Age, Name, Any Pets? (true/false)");
+        String userInput1 = scanner.next();
+        checkInput(userInput1);
+
+
     }
 
-    public static String profile (int age){
-        return "That's crazy, you dont look like " + age;
-    }
-    public static String profile(String quote){
-        return quote;
+    public static void checkInput (String input) {
+        if (input.toUpperCase().equals("TRUE") || input.toUpperCase().equals("FALSE") ){
+            boolean inputType = Boolean.parseBoolean(input);
+            aboutMe(inputType);
+        } else if ( Double.isNaN(Double.parseDouble(input)) ){
+            int userType = Integer.parseInt(input);
+            aboutMe(userType);
+        } else {
+            aboutMe(input);
+        }
     }
 
+    public static String aboutMe (String name){
+        System.out.println("Name: " + name);
+        return name;
+    }
+
+    public static int aboutMe (int age){
+        System.out.println("Age:" + age);
+        return age;
+    }
+
+    public static boolean aboutMe (boolean pets){
+        System.out.println("Pets: " + pets);
+        return pets;
+    }
 }
