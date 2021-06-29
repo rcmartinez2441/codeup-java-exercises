@@ -51,6 +51,7 @@ public class MethodsExercises {
         System.out.println("Enter a Number Between 1 and 10");
     }
 
+    //refactor scanner as an argument
     public static int getInteger(int min, int max) {
         Scanner scanner = new Scanner(System.in);
         int userEntered = scanner.nextInt();
@@ -59,7 +60,7 @@ public class MethodsExercises {
         } else {
             System.out.println("Number is not in Range try again");
             promptUser();
-            getInteger(1, 10);
+            userEntered = getInteger(1, 10);
         }
         return userEntered;
     }
@@ -84,19 +85,33 @@ public class MethodsExercises {
         String factorialContainer = "";
         int total = 1;
         String currentFactorial = String.valueOf(1);
+        int counter = typedNumber;
         for (int i = 1; i <= typedNumber; i++) {
             total = total * i;
             if (i == 1) {
-                System.out.printf("%s! = %s = %s\n", i, currentFactorial, total);
-            } else if (i == typedNumber) {
+                factorialContainer = whiteSpace(counter);
+                System.out.printf("%s!  = %s   %s  = %s\n", i, currentFactorial, factorialContainer, total);
+            } else if (i == 10) {
                 currentFactorial += " x " + i;
-                System.out.printf("%s! = %s = %s\n", i, currentFactorial, total);
+                factorialContainer = whiteSpace(counter);
+                System.out.printf("%s! = %s%s= %s\n", i, currentFactorial, factorialContainer, total);
                 break;
             } else {
                 currentFactorial = currentFactorial + " x " + i;
-                System.out.printf("%s! = %s = %s\n", i, currentFactorial, total);
+                factorialContainer = whiteSpace(counter);
+                counter--;
+                System.out.printf("%s! = %s%s  = %s\n", i, currentFactorial, factorialContainer, total);
             }
+
         }
+    }
+
+    public static String whiteSpace(int counter) {
+        String spaceHolder = "    ";
+        for (int i = 1; i <= counter; i++){
+            spaceHolder += "    ";
+        }
+        return spaceHolder;
     }
 
     //NOT DONE NEED help with 4 and 5
