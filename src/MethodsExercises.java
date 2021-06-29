@@ -9,7 +9,8 @@ public class MethodsExercises {
         System.out.println(divide(20, 4));
 
         System.out.println("Enter a Number Between 1 and 10");
-        int userInput = getInteger(1, 10);
+        Scanner scanner = new Scanner(System.in);
+        int userInput = getInteger(1, 10, scanner) ;
         calcFactorial(userInput);
 
 
@@ -52,15 +53,14 @@ public class MethodsExercises {
     }
 
     //refactor scanner as an argument
-    public static int getInteger(int min, int max) {
-        Scanner scanner = new Scanner(System.in);
+    public static int getInteger(int min, int max, Scanner scanner) {
         int userEntered = scanner.nextInt();
         if (userEntered >= 1 && userEntered <= 10) {
             System.out.println("Number is in Range");
         } else {
             System.out.println("Number is not in Range try again");
             promptUser();
-            userEntered = getInteger(1, 10);
+            userEntered = getInteger(1, 10, scanner);
         }
         return userEntered;
     }
@@ -114,5 +114,6 @@ public class MethodsExercises {
         return spaceHolder;
     }
 
-    //NOT DONE NEED help with 4 and 5
+    // *** 4. Create an application that simulates dice rolling ***
+
 }
