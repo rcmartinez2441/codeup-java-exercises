@@ -10,12 +10,10 @@ public class MethodsExercises {
 
         System.out.println("Enter a Number Between 1 and 10");
         Scanner scanner = new Scanner(System.in);
-//        int userInput = getInteger(1, 10, scanner) ;
-//        calcFactorial(userInput);
+        int userInput = getInteger(1, 10, scanner) ;
+        calcFactorial(userInput);
 
         numberOfDice(scanner);
-
-
     }
     //Create four separate methods. Each will perform an arithmetic operation:
     //Addition
