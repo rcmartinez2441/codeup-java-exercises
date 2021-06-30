@@ -78,4 +78,9 @@ public class ObjectOrientedProgrammingLecture {
 
     }
 
+    //Questions to Ask
+    //1. What are application entities
+    //3. "By default, fields belong to objects, but can be defined as belonging to a class with the static keyword"
+    // 4. For static fields, how would you call field without initializing Object?
+
 }
