@@ -8,7 +8,7 @@ public class MethodsExercises {
         System.out.println(multiply(6, 9));
         System.out.println(divide(20, 4));
 
-        System.out.println("Enter a Number Between 1 and 10");
+//        System.out.println("Enter a Number Between 1 and 10");
         Scanner scanner = new Scanner(System.in);
         int userInput = getInteger(1, 10, scanner) ;
         calcFactorial(userInput);
@@ -55,13 +55,13 @@ public class MethodsExercises {
 
     //refactor scanner as an argument
     public static int getInteger(int min, int max, Scanner scanner) {
+        System.out.printf("Enter a Number Between %s and %s\n", min, max);
         int userEntered = scanner.nextInt();
-        if (userEntered >= 1 && userEntered <= 10) {
+        if (userEntered >= min && userEntered <= max) {
             System.out.println("Number is in Range");
         } else {
             System.out.println("Number is not in Range try again");
-            promptUser();
-            userEntered = getInteger(1, 10, scanner);
+            userEntered = getInteger(min, max, scanner);
         }
         return userEntered;
     }
@@ -91,7 +91,7 @@ public class MethodsExercises {
             total = total * i;
             if (i == 1) {
                 factorialContainer = whiteSpace(counter);
-                System.out.printf("%s!  = %s   %s  = %s\n", i, currentFactorial, factorialContainer, total);
+                System.out.printf("%s! = %s   %s  = %s\n", i, currentFactorial, factorialContainer, total);
             } else if (i == 10) {
                 currentFactorial += " x " + i;
                 factorialContainer = whiteSpace(counter);
