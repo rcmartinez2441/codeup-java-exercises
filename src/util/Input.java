@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 public class Input {
     private Scanner scanner;
-    public int min;
-    public int max;
+    public int minInt;
+    public int maxInt;
+    public double minDouble;
+    public double maxDouble;
 
     public Input() {
         createScanner();
@@ -26,8 +28,8 @@ public class Input {
 
     }
 
-    public boolean yesNo() {
-        System.out.println("yesNo?");
+    public boolean yesNo(String prompt) {
+        System.out.println(prompt);
         String userInput = userInput();
         if (userInput.toUpperCase().startsWith("Y")) {
             return true;
@@ -49,17 +51,32 @@ public class Input {
         return typedNumber;
     }
 
-//    public int getInt (){
-//
-//    }
-//
-//    public double getDouble(double min, double max){
-//
-//    }
-//
-//    public double getDouble(){
-//
-//    }
+    public int getInt (String prompt){
+        System.out.println(prompt);
+        int typedNumber = Integer.parseInt(userInput());
+        System.out.println("You Typed: " + typedNumber);
+        return typedNumber;
+    }
+
+    public double getDouble(double min, double max, String prompt){
+        System.out.printf(prompt, min, max);
+        double typedNumber = Double.parseDouble(userInput());
+        if (typedNumber < min || typedNumber > max) {
+            System.out.println("That is out of range, please: ");
+            getDouble(min, max, prompt);
+        } else {
+            System.out.println("Your Typed: " + typedNumber);
+            return typedNumber;
+        }
+        return typedNumber;
+    }
+
+    public double getDouble(String prompt){
+        System.out.println(prompt);
+        double typedNumber = Double.parseDouble(userInput());
+        System.out.println("You Typed: " + typedNumber);
+        return typedNumber;
+    }
 
 
 }
