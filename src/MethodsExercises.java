@@ -87,6 +87,7 @@ public class MethodsExercises {
         int total = 1;
         String currentFactorial = String.valueOf(1);
         int counter = typedNumber;
+
         for (int i = 1; i <= typedNumber; i++) {
             total = total * i;
             if (i == 1) {
