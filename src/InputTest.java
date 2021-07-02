@@ -13,13 +13,12 @@ public class InputTest {
         //getInt()
         inputJava.setMinMaxInt(1,10);
         inputJava.getInt();
-        inputJava.getInt("Type In An Integer");
+//        inputJava.getInt("Type In An Integer");
 
         //getDouble()
-        inputJava.minDouble = 1;
-        inputJava.maxDouble = 10;
-        inputJava.getDouble(inputJava.minDouble, inputJava.maxDouble, "Type a Number Between %s and %s\n");
-        inputJava.getDouble("Type In A Double");
+        inputJava.setMinMaxDouble(2,30);
+        inputJava.getDouble();
+//        inputJava.getDouble("Type In A Double");
 
     }
 }

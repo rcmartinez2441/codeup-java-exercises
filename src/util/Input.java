@@ -66,12 +66,12 @@ public class Input {
         return typedNumber;
     }
 
-    public double getDouble(double min, double max, String prompt){
-        System.out.printf(prompt, min, max);
+    public double getDouble(){
+        System.out.printf("Type a Number Between %s and %s\n", minDouble, maxDouble);
         double typedNumber = Double.parseDouble(userInput());
-        if (typedNumber < min || typedNumber > max) {
+        if (typedNumber < minDouble || typedNumber > maxDouble) {
             System.out.println("That is out of range, please: ");
-            getDouble(min, max, prompt);
+            getDouble();
         } else {
             System.out.println("Your Typed: " + typedNumber);
             return typedNumber;
