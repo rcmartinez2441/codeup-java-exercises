@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Input {
     private Scanner scanner;
-    public int minInt;
-    public int maxInt;
-    public double minDouble;
-    public double maxDouble;
+    private int minInt;
+    private int maxInt;
+    private double minDouble;
+    private double maxDouble;
 
     public Input() {
         createScanner();
@@ -37,13 +37,21 @@ public class Input {
             return false;
         }
     }
+    public void setMinMaxInt(int min, int max) {
+        this.minInt = min;
+        this.maxInt = max;
+    }
 
-    public int getInt(int min, int max) {
-        System.out.printf("Type a Number Between %s and %s\n", min, max);
+    public void setMinMaxDouble (double min, double max){
+        this.minDouble = min;
+        this.maxDouble = max;
+    }
+    public int getInt() { //replaced parameter with private fields that can only be set calling the setters
+        System.out.printf("Type a Number Between %s and %s\n", minInt, maxInt);
         int typedNumber = Integer.parseInt(userInput());
-        if (typedNumber < min || typedNumber > max) {
+        if (typedNumber < minInt || typedNumber > maxInt) {
             System.out.println("That is out of range, please: ");
-            getInt(min, max);
+            getInt();
         } else {
             System.out.println("Your Typed: " + typedNumber);
             return typedNumber;

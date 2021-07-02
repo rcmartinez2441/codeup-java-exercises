@@ -11,9 +11,8 @@ public class InputTest {
         System.out.println(yesNo);
 
         //getInt()
-        inputJava.minInt = 1;
-        inputJava.maxInt = 10;
-        inputJava.getInt(inputJava.minInt,inputJava.maxInt);
+        inputJava.setMinMaxInt(1,10);
+        inputJava.getInt();
         inputJava.getInt("Type In An Integer");
 
         //getDouble()
