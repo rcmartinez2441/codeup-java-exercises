@@ -18,7 +18,7 @@ public class InputTest {
         //getDouble()
         inputJava.setMinMaxDouble(2,30);
         inputJava.getDouble();
-//        inputJava.getDouble("Type In A Double");
+//        inputJava.getDouble("Type In A Double"); testing
 
     }
 }
