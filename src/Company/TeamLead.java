@@ -6,5 +6,4 @@ public class TeamLead implements TimeSheets {
         System.out.println("TeamLead is filling the Time Sheets");
     }
 
-    pu
 }
