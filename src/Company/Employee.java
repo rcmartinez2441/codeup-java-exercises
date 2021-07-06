@@ -1,5 +1,6 @@
 package Company;
 
-public class Employee {
-
+abstract class Employee {
+    protected String name;
+    protected String department;
 }
