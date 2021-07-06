@@ -1,5 +1,6 @@
 package shapes;
 
-abstract class Shape {
-
+interface Shape {
+    double getPerimeter();
+    double getArea();
 }

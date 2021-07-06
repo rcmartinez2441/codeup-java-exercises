@@ -25,7 +25,7 @@ public class ShapesTest {
             //declare a variable of the type Measurable named myShape.
             //Test your code by creating instances of both Square and Rectangle and assigning them to myShape so you can display the shape's area and perimeter.
 
-        Measurable myShape;
+        Shape myShape;
         myShape = new Rectangle(4,5);
         System.out.println("Area: " + myShape.getArea());
         System.out.println("Perimeter: " + myShape.getPerimeter());
@@ -39,6 +39,7 @@ public class ShapesTest {
             //* Because  Rectangle inherits from an abstract class and methods MUST be define if not, Rectangle will also be considered abstract and not compile
 
         //What happens if you try to call the getLength or getWidth methods of the myShape variable? Why?
-            //* Measurable is
+            //* Shape is an interface which defines methods but no implementations, methods MUST be re-defined in subclasses that implement Shape and then implement code in those methods. which will be unique to that subclass
+            // That is why myShape = new Rectangle (x,y) and myShape = newSquare(x) can use same getArea() and getPerimeter() from Shape Interface and get different results
     }
 }
