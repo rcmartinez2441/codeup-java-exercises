@@ -4,8 +4,9 @@ abstract class Quadrilateral implements Shape {
     protected double width;
 
     public Quadrilateral(double length, double width){
-        setLength(length);
-        setWidth(width);
+        //Will allow you to set "default" length width
+        this.length = length;
+        this.width = width;
     }
 
     public double getLength() {

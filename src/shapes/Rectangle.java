@@ -6,22 +6,18 @@ public class Rectangle extends Quadrilateral{
         super(length, width);
     }
 
-    @Override
     public void setLength(double length) {
         super.length = length;
     }
 
-    @Override
     public void setWidth(double width) {
         super.width = width;
     }
 
-    @Override
     public double getPerimeter() {
         return 2 * (super.getLength() + super.getWidth());
     }
 
-    @Override
     public double getArea() {
         return (super.getLength() * super.getWidth());
     }
