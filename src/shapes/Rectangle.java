@@ -1,9 +1,19 @@
 package shapes;
 
-public class Rectangle extends Quadrilateral implements Shape {
+public class Rectangle extends Quadrilateral{
 
     public Rectangle(double length, double width) {
         super(length, width);
+    }
+
+    @Override
+    public void setLength(double length) {
+        super.length = length;
+    }
+
+    @Override
+    public void setWidth(double width) {
+        super.width = width;
     }
 
     @Override
@@ -15,6 +25,7 @@ public class Rectangle extends Quadrilateral implements Shape {
     public double getArea() {
         return (super.getLength() * super.getWidth());
     }
+
 //    protected int length;
 //    protected int width;
 //

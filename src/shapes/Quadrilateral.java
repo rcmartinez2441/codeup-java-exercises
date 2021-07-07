@@ -16,11 +16,7 @@ abstract class Quadrilateral implements Shape {
         return width;
     }
 
-    public void setLength(double length) {
-        this.length = length;
-    }
+    public abstract void setLength(double length);
 
-    public void setWidth(double width) {
-        this.width = width;
-    }
+    public abstract void setWidth(double width);
 }
