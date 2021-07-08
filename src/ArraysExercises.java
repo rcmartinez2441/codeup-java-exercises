@@ -13,14 +13,15 @@ public class ArraysExercises {
         String[] personArray = {person1.getName(), person2.getName(), person3.getName()};
         System.out.println(Arrays.toString(personArray));
 
-        String[] newArray = addPerson(personArray, "Stephen");
+        Person person4 = new Person("Stephen");
+        String[] newArray = addPerson(personArray, person4);
         System.out.println(Arrays.toString(newArray));
 
     }
 
-    public static String[] addPerson(String[] peoples, String newPerson) {
+    public static String[] addPerson(String[] peoples, Person newPerson) {
         String[] newArray = Arrays.copyOf(peoples, peoples.length + 1);
-        newArray[peoples.length] = newPerson;
+        newArray[peoples.length] = newPerson.getName();
         return newArray;
     }
 
