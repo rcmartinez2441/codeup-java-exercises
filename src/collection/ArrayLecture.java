@@ -4,19 +4,38 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArrayLecture {
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 //        int[] intArray = getIntArray() ; // this will initialize empty array
 //        intArray = Arrays.stream(intArray).map( (i) -> {return i * 2;} ).toArray();
 //        System.out.println(Arrays.toString(intArray));
 //
 //        System.out.println("Enter Array Length");
 //        System.out.println(Arrays.toString(setIntArray(new int[scanner.nextInt()], scanner)));
-        System.out.println( Arrays.toString( stringArray(scanner) ) );
+
+        String[] person1Names = getNameArray();
+
+        String[] person2Names = getNameArray();
+
+        //STATIC ARRAY METHODS
+
+        // ** Arrays.equals ( array1, array2 ) boolean
+        System.out.println(Arrays.equals(person1Names, person2Names));
+
+        //Arrays.copy (a1, length )
+        person1Names = Arrays.copyOf(person1Names, person1Names.length);
+        System.out.println(Arrays.toString(person1Names));
+
+
+        //Arrays.sort()
+        int[] intArr = getIntArray();
+        Arrays.sort(intArr);
+        System.out.println(Arrays.toString(intArr));
     }
 
     public static int[] getIntArray () {
-        return new int[] {1,2,3};
+        return new int[] {3,1,2};
     }
 
     public static int[] getIntArray (int length){
@@ -43,8 +62,10 @@ public class ArrayLecture {
     //I recommend using a while loop that checks against a variable you set each time the user enters a name and presses 'return'
     //Finally, call that method in your main() and print out its returned value, as a string
     //Arrays.toString(yourArray);
-    public static String[] stringArray (Scanner scanner) {
-        System.out.println("Enter Full Name");
+    public static String[] getNameArray () {
+        System.out.println("Enter Full Name Seperated by Spaces");
         return scanner.nextLine().split(" ");
     }
+
+
 }
