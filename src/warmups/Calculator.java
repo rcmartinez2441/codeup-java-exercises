@@ -18,12 +18,12 @@ public class Calculator {
     public Calculator () {
         getUserInput();
     }
-    public void getUserInput () {
+    private void getUserInput () {
         System.out.println("Type in Your First Number");
         this.num1 = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Type Operator");
+        System.out.println("Type An Operator [ (+) OR (-) OR (*) OR (/) ]");
         this.userOperator = scanner.nextLine();
 
         System.out.println("Type in Second Number");
@@ -32,7 +32,7 @@ public class Calculator {
         checkInput();
     }
 
-    public void checkInput () {
+    private void checkInput () {
         //Trying to Use Switch Statements
         switch (userOperator){
             case "+":
@@ -56,13 +56,13 @@ public class Calculator {
         returnInputAndResult();
     }
 
-    public void returnInputAndResult () {
+    private void returnInputAndResult () {
         System.out.printf("%s %s %s = %s\n", num1, userOperator, num2, finalCalc);
         scanner.nextLine();
         wannaTryAgain();
     }
 
-    public void wannaTryAgain () {
+    private void wannaTryAgain () {
         System.out.println("Would You like to Start a New Calculation? Y/N");
         String anotherOne = scanner.nextLine().toUpperCase();
         if(anotherOne.startsWith("Y")){
