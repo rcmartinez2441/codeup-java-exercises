@@ -29,7 +29,21 @@ public class CollectionsLecture {
         System.out.println(stringArrCoffee.hashCode());
 
         //**using .equals
-        System.out.println(stringArr.equals(stringArrCoffee));
+        System.out.println(stringArr.equals(stringArrCoffee)); //returns booloan
+
+        //Using ArrayList with Custom Made object types
+        //Example
+//        ArrayList<Movie> movieList = new ArrayList<Movie>();
+        //and now you can use arraylist methods with object type Movie
+
+        printListDetails();
+
+    }
+
+    /**
+     * Does Stuff
+     */
+    public static void printListDetails () {
 
     }
 }
