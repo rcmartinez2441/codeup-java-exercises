@@ -1,5 +1,8 @@
 package grades;
 
+import com.sun.jdi.request.StepRequest;
+import util.Input;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -11,17 +14,17 @@ public class GradesApplication {
         //*** COLLECTIONS EXERCISES ***
         //================================================================================
 //        #1)
-        Student student1 = new Student("Raul");
-        System.out.println(student1.getName());
-
-        for (int i = 69 ; i < 100  ; i+= 5) {
-            student1.addGrade(i);
-        }
-        System.out.println(student1.getGrades());
-
-        System.out.println("Average Grade: " + student1.getGradeAverage() );
-        System.out.println("=====================================================");
-        System.out.println();
+//        Student student1 = new Student("Raul");
+//        System.out.println(student1.getName());
+//
+//        for (int i = 69 ; i < 100  ; i+= 5) {
+//            student1.addGrade(i);
+//        }
+//        System.out.println(student1.getGrades());
+//
+//        System.out.println("Average Grade: " + student1.getGradeAverage() );
+//        System.out.println("=====================================================");
+//        System.out.println();
         //================================================================================
 //        #2
 
@@ -46,44 +49,14 @@ public class GradesApplication {
         printStudentInfo(shrek);
         printStudentInfo(donkey);
         printStudentInfo(raul);
+        //==========================================================================
 
-
-        //Create the command line interface
-        //
+        // 3) Create the command line interface
         //Print the list of GitHub usernames out to the console, and ask the user which student they would like to see more information about. The user should enter a GitHub username (i.e. one of the keys in your map). If the given input does not match up with a key in your map, tell the user that no users with that username were found. If the given username does exist, display information about that student, including their name and their grades.
-        //
+
         //After the information is displayed, the application should ask the user if they want to continue, and keep running so long as the answer is yes.
 
-        /*
-        Welcome!
-
-        Here are the GitHub usernames of our students:
-
-        |zgulde| |ryanorsinger| |jreich5| |fmendozaro| |MontealegreLuis|
-
-        What student would you like to see more information on?
-
-        > pizza
-
-        Sorry, no student found with the GitHub username of "pizza".
-
-        Would you like to see another student?
-
-        > y
-
-        What student would you like to see more information on?
-
-        > zgulde
-
-        Name: Zach - GitHub Username: zgulde
-        Current Average: 87.4
-
-        Would you like to see another student?
-
-        > no
-
-        Goodbye, and have a wonderful day!
-         */
+        consoleInterface(students);
     }
 
     public static void addStudent( HashMap<String, Student> currentHashmap, String username, String studentName){
@@ -100,5 +73,70 @@ public class GradesApplication {
         System.out.println("------------------------------------");
     }
 
+    public static void consoleInterface (HashMap<String, Student> hashmap){
+        Input applicationInput = new Input();
+        System.out.println("Here are the GitHub usernames of our students: ");
+        showListOfUsers(hashmap, applicationInput);
 
+        //What student would you like to see more information on?
+//        whatStudent(hashmap, applicationInput);
+
+
+
+
+        //Sorry, no student found with the GitHub username of "pizza".
+
+        //Would you like to see another student?
+
+        //What student would you like to see more information on?
+
+        //        > zgulde
+
+        //        Name: Zach - GitHub Username: zgulde
+        //        Current Average: 87.4
+
+        //Would you like to see another student?
+        //
+        //        > no
+        //
+        //        Goodbye, and have a wonderful day!
+    }
+//    public static void
+
+    public static void showListOfUsers (HashMap<String, Student> hashmap, Input applicationInput) {
+        System.out.println("Here are the GitHub usernames of our students: ");
+        System.out.println(hashmap.keySet());
+        whatStudent(hashmap, applicationInput);
+    }
+
+    public static void whatStudent (HashMap<String, Student> hashmap,  Input applicationInput) {
+        System.out.println("What student would you like to see more info on?");
+        String userInput = applicationInput.userInput();
+        checkInput(hashmap, userInput, applicationInput);
+    }
+
+    public static void checkInput (HashMap<String, Student> hashmap, String userInput, Input applicationInput){
+        if (hashmap.containsKey(userInput)){
+            showStudentDetails(userInput, hashmap);
+        } else {
+            System.out.println("That's not a valid entry");
+            tryAgain(hashmap, applicationInput);
+        }
+    }
+
+    public static void showStudentDetails (String userInput, HashMap<String, Student> hashmap) {
+        System.out.println();
+        System.out.println("Student Name: " + hashmap.get(userInput).getName());
+        System.out.println();
+        System.out.println("Grade Average" + hashmap.get(userInput).getGradeAverage());
+    }
+
+    public static void tryAgain (HashMap<String, Student> hashmap, Input userInput){
+        boolean continueApp = userInput.yesNo("Would you like to see another Student");
+        if(!continueApp){
+            consoleInterface(hashmap);
+        } else {
+            System.out.println("Okay thanks for playing");
+        }
+    }
 }
