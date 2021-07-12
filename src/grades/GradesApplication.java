@@ -75,14 +75,11 @@ public class GradesApplication {
 
     public static void consoleInterface (HashMap<String, Student> hashmap){
         Input applicationInput = new Input();
-        System.out.println("Here are the GitHub usernames of our students: ");
+
         showListOfUsers(hashmap, applicationInput);
 
         //What student would you like to see more information on?
 //        whatStudent(hashmap, applicationInput);
-
-
-
 
         //Sorry, no student found with the GitHub username of "pizza".
 
@@ -104,8 +101,8 @@ public class GradesApplication {
 //    public static void
 
     public static void showListOfUsers (HashMap<String, Student> hashmap, Input applicationInput) {
-        System.out.println("Here are the GitHub usernames of our students: ");
-        System.out.println(hashmap.keySet());
+        System.out.println("Here are the GitHub usernames of our students: \n");
+        System.out.println(hashmap.keySet() + "\n");
         whatStudent(hashmap, applicationInput);
     }
 
@@ -117,26 +114,27 @@ public class GradesApplication {
 
     public static void checkInput (HashMap<String, Student> hashmap, String userInput, Input applicationInput){
         if (hashmap.containsKey(userInput)){
-            showStudentDetails(userInput, hashmap);
+            showStudentDetails(userInput, hashmap, applicationInput);
         } else {
             System.out.println("That's not a valid entry");
             tryAgain(hashmap, applicationInput);
         }
     }
 
-    public static void showStudentDetails (String userInput, HashMap<String, Student> hashmap) {
+    public static void showStudentDetails (String userTyped, HashMap<String, Student> hashmap, Input applicationDetails) {
         System.out.println();
-        System.out.println("Student Name: " + hashmap.get(userInput).getName());
-        System.out.println();
-        System.out.println("Grade Average" + hashmap.get(userInput).getGradeAverage());
+        System.out.println("Student Name: " + hashmap.get(userTyped).getName());
+        System.out.println("Github Username: " + userTyped);
+        System.out.println("Grade Average: " + hashmap.get(userTyped).getGradeAverage());
+        tryAgain(hashmap, applicationDetails);
     }
 
     public static void tryAgain (HashMap<String, Student> hashmap, Input userInput){
         boolean continueApp = userInput.yesNo("Would you like to see another Student");
-        if(!continueApp){
+        if(continueApp){
             consoleInterface(hashmap);
         } else {
-            System.out.println("Okay thanks for playing");
+            System.out.println("Goodbye, have a good day");
         }
     }
 }
