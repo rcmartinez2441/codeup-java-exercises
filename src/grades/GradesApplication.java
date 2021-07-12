@@ -148,8 +148,8 @@ public class GradesApplication {
         treemap.putAll(map);
         System.out.println(treemap);
         //Map.Entry<K, V> just allows you to store a key/value data set and store it as an object, almost like an object in an array in JS
-        for (Map.Entry<String, Student> student : treemap.entrySet()){
-            Student currentStudent = treemap.get(student.getKey()); //student.getKey will return current iteration's key (AKA github username) in string and then tree.get will use that to find VALUE in Student obj for .getName()
+        for (Map.Entry<String, Student> studentKeyValue : treemap.entrySet()){
+            Student currentStudent = treemap.get(studentKeyValue.getKey()); //student.getKey will return current iteration's key (AKA github username) in string and then tree.get will use that to find VALUE in Student obj for .getName()
             System.out.println(currentStudent.getName());
             System.out.println(currentStudent.getGrades());
         }
