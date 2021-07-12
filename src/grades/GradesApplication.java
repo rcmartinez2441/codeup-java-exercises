@@ -6,6 +6,8 @@ import util.Input;
 import java.util.*;
 
 public class GradesApplication {
+    private static HashMap<String, Student> students = new HashMap<>();
+
     public static void main(String[] args) {
 
         //*** COLLECTIONS EXERCISES ***
@@ -26,15 +28,15 @@ public class GradesApplication {
 //        #2
 
         //Inside the main method, create a HashMap named students. It should have keys that are strings that represent github usernames, and values that are Student objects
-        HashMap<String, Student> students = new HashMap<>();
+//        HashMap<String, Student> students = new HashMap<>();
 
         //Create at least 4 Student objects with at least 3 grades each, and add them to the map.
         //--------------------------------
         //Adding Students
-        addStudent(students, "jeffchan", "Jeff");
-        addStudent(students, "shrek420", "Shrek");
-        addStudent(students, "donkey6", "Donkey");
-        addStudent(students, "rcmartinez2441", "Raul");
+        addStudent("jeffchan", "Jeff");
+        addStudent("shrek420", "Shrek");
+        addStudent("donkey6", "Donkey");
+        addStudent("rcmartinez2441", "Raul");
         //Set a reference point to get Jeff's , Student Class from Hashmap
         Student jeff = students.get("jeffchan");
         Student shrek = students.get("shrek420");
@@ -56,8 +58,8 @@ public class GradesApplication {
         consoleInterface(students);
     }
 
-    public static void addStudent( HashMap<String, Student> currentHashmap, String username, String studentName){
-        currentHashmap.put(username, new Student(studentName));
+    public static void addStudent( String username, String studentName){
+        students.put(username, new Student(studentName));
 
     }
 
@@ -138,7 +140,7 @@ public class GradesApplication {
         if(continueApp){
             consoleInterface(hashmap);
         } else {
-            System.out.println("\nGoodbye, have a good day");
+            System.out.println("\n-------------- Goodbye, have a good day ------------------");
         }
     }
 
@@ -148,11 +150,13 @@ public class GradesApplication {
         treemap.putAll(map);
         System.out.println(treemap);
         //Map.Entry<K, V> just allows you to store a key/value data set and store it as an object, almost like an object in an array in JS
+        System.out.println("------------------- Viewing All Grades ---------------------");
         for (Map.Entry<String, Student> studentKeyValue : treemap.entrySet()){
             Student currentStudent = treemap.get(studentKeyValue.getKey()); //student.getKey will return current iteration's key (AKA github username) in string and then tree.get will use that to find VALUE in Student obj for .getName()
             System.out.println(currentStudent.getName());
             System.out.println(currentStudent.getGrades());
         }
+
 
     }
 }

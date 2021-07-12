@@ -3,8 +3,8 @@ package grades;
 import java.util.ArrayList;
 
 public class Student {
-    private String studentName;
-    private ArrayList<Integer> grades;
+    private final String studentName;
+    private final ArrayList<Integer> grades;
 
     public Student(String studentName) {
         this.studentName = studentName;
