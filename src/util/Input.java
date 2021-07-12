@@ -18,7 +18,7 @@ public class Input {
     }
 
     public String userInput() { //Allows user to type in console
-        return scanner.next(); //Returns a string
+        return scanner.nextLine(); //Returns a string
     }
 
     public String getString(String prompt) {

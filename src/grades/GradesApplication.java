@@ -106,13 +106,13 @@ public class GradesApplication {
     }
 
     public static void whatStudent () {
-        System.out.println("Please type 'view all grades' to view all Student grades OR type username of Student you would like to view: ");
+        System.out.println("Please type 'view all' to view all Student Grades OR type username of Student you would like to view: ");
         String typedInput = userInput.userInput();
         checkInput(typedInput);
     }
 
     public static void checkInput (String userInput){
-        if (userInput.equalsIgnoreCase("view all grades")){
+        if (userInput.equalsIgnoreCase("view all")){
             viewAllGrades();
             whatStudent();
         } else {
@@ -144,9 +144,8 @@ public class GradesApplication {
     }
 
     public static void viewAllGrades (){
-        Map<String, Student> map = students;
-        TreeMap<String, Student> treemap = new TreeMap<>();
-        treemap.putAll(map);
+//        Map<String, Student> map = students;
+        TreeMap<String, Student> treemap = new TreeMap<>(students);
         System.out.println(treemap);
         //Map.Entry<K, V> just allows you to store a key/value data set and store it as an object, almost like an object in an array in JS
         System.out.println("------------------- Viewing All Grades ---------------------");
@@ -155,5 +154,6 @@ public class GradesApplication {
             System.out.println(currentStudent.getName());
             System.out.println(currentStudent.getGrades());
         }
+        System.out.println("-----------------------------------------------------");
     }
 }
