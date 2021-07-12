@@ -1,6 +1,5 @@
 package grades;
 
-import com.sun.jdi.request.StepRequest;
 import util.Input;
 
 import java.util.*;
@@ -150,10 +149,36 @@ public class GradesApplication {
         //Map.Entry<K, V> just allows you to store a key/value data set and store it as an object, almost like an object in an array in JS
         System.out.println("------------------- Viewing All Grades ---------------------");
         for (Map.Entry<String, Student> studentKeyValue : treemap.entrySet()){
-            Student currentStudent = treemap.get(studentKeyValue.getKey()); //student.getKey will return current iteration's key (AKA github username) in string and then tree.get will use that to find VALUE in Student obj for .getName()
+            Student currentStudent = treemap.get(studentKeyValue.getKey());
+            //student.getKey will return current iteration's key (AKA github username) in string and then tree.get will use that to find VALUE in Student obj for .getName()
             System.out.println(currentStudent.getName());
             System.out.println(currentStudent.getGrades());
         }
         System.out.println("-----------------------------------------------------");
+
+
+        boolean viewCSVFiles = userInput.yesNo("View All In CSV File? Y/N");
+            if(viewCSVFiles){
+                convertToCSV();
+                whatStudent();
+            } else {
+                System.out.println("\n-------------- Goodbye, have a good day ------------------");
+            }
+
+    }
+
+    public static void convertToCSV() {
+        TreeMap<String, Student> studentsTreeMap = new TreeMap<>(students);
+        System.out.println();
+        System.out.println("name,github_username,average");
+
+        for (Map.Entry<String, Student> student : studentsTreeMap.entrySet()){
+            Student currentStudent = studentsTreeMap.get(student.getKey());
+            String studentName = currentStudent.getName();
+            String studentUserName = student.getKey();
+            Double studentAvg = currentStudent.getGradeAverage();
+            System.out.printf("%s,%s,%s\n", studentName, studentUserName, studentAvg);
+        }
+        System.out.println();
     }
 }
