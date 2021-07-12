@@ -6,7 +6,8 @@ import util.Input;
 import java.util.*;
 
 public class GradesApplication {
-    private static HashMap<String, Student> students = new HashMap<>();
+    private static final HashMap<String, Student> students = new HashMap<>();
+    private static final Input userInput = new Input();
 
     public static void main(String[] args) {
 
@@ -54,13 +55,11 @@ public class GradesApplication {
         //Print the list of GitHub usernames out to the console, and ask the user which student they would like to see more information about. The user should enter a GitHub username (i.e. one of the keys in your map). If the given input does not match up with a key in your map, tell the user that no users with that username were found. If the given username does exist, display information about that student, including their name and their grades.
 
         //After the information is displayed, the application should ask the user if they want to continue, and keep running so long as the answer is yes.
-        viewAllGrades(students);
-        consoleInterface(students);
+        consoleInterface();
     }
 
     public static void addStudent( String username, String studentName){
         students.put(username, new Student(studentName));
-
     }
 
     public static void printStudentInfo (Student student){
@@ -72,11 +71,8 @@ public class GradesApplication {
         System.out.println("------------------------------------");
     }
 
-    public static void consoleInterface (HashMap<String, Student> hashmap){
-        Input applicationInput = new Input();
-
-        showListOfUsers(hashmap, applicationInput);
-
+    public static void consoleInterface (){
+        showListOfUsers();
         //What student would you like to see more information on?
 //        whatStudent(hashmap, applicationInput);
 
@@ -87,65 +83,68 @@ public class GradesApplication {
         //What student would you like to see more information on?
 
         //        > zgulde
-
         //        Name: Zach - GitHub Username: zgulde
         //        Current Average: 87.4
 
-        //Would you like to see another student?
+        //  Would you like to see another student?
         //
         //        > no
         //
-        //        Goodbye, and have a wonderful day!
+        //  Goodbye, and have a wonderful day!
     }
 
-    public static void showListOfUsers (HashMap<String, Student> hashmap, Input applicationInput) {
+    public static void showListOfUsers () {
         System.out.println("Here are the GitHub usernames of our students: \n");
-        Map<String, Student> map = hashmap;
         TreeMap<String, Student> sortedMap = new TreeMap<>();
-        sortedMap.putAll(map);
+        sortedMap.putAll(students);
 
         for (Map.Entry<String, Student> entry : sortedMap.entrySet()){
             System.out.print("|" + entry.getKey() + "| ");
         }
         System.out.println("\n");
-        whatStudent(hashmap, applicationInput);
+        whatStudent();
     }
 
-    public static void whatStudent (HashMap<String, Student> hashmap,  Input applicationInput) {
-        System.out.println("What student would you like to see more info on?");
-        String userInput = applicationInput.userInput();
-        checkInput(hashmap, userInput, applicationInput);
+    public static void whatStudent () {
+        System.out.println("Please type 'view all grades' to view all Student grades OR type username of Student you would like to view: ");
+        String typedInput = userInput.userInput();
+        checkInput(typedInput);
     }
 
-    public static void checkInput (HashMap<String, Student> hashmap, String userInput, Input applicationInput){
-        if (hashmap.containsKey(userInput)){
-            showStudentDetails(userInput, hashmap, applicationInput);
+    public static void checkInput (String userInput){
+        if (userInput.equalsIgnoreCase("view all grades")){
+            viewAllGrades();
+            whatStudent();
         } else {
-            System.out.println("\nThat's not a valid entry\n");
-            tryAgain(hashmap, applicationInput);
+            if (students.containsKey(userInput)) {
+                showStudentDetails(userInput);
+            } else {
+                System.out.println("\nThat's not a valid entry\n");
+                tryAgain();
+            }
         }
     }
 
-    public static void showStudentDetails (String userTyped, HashMap<String, Student> hashmap, Input applicationDetails) {
+    public static void showStudentDetails (String userTyped) {
         System.out.println();
-        System.out.println("Student Name: " + hashmap.get(userTyped).getName());
+        System.out.println("Student Name: " + students.get(userTyped).getName());
         System.out.println("Github Username: " + userTyped);
-        System.out.println("Grade Average: " + hashmap.get(userTyped).getGradeAverage());
+        System.out.println("Grade Average: " + students.get(userTyped).getGradeAverage());
         System.out.println();
-        tryAgain(hashmap, applicationDetails);
+        tryAgain();
     }
 
-    public static void tryAgain (HashMap<String, Student> hashmap, Input userInput){
+    public static void tryAgain (){
         boolean continueApp = userInput.yesNo("Would you like to see another Student? Y/N \n");
         if(continueApp){
-            consoleInterface(hashmap);
+            consoleInterface();
         } else {
             System.out.println("\n-------------- Goodbye, have a good day ------------------");
         }
     }
 
-    public static void viewAllGrades (HashMap<String,Student> hashmap){
-        Map<String, Student> map = hashmap;
+    public static void viewAllGrades (){
+        Map<String, Student> map = students;
         TreeMap<String, Student> treemap = new TreeMap<>();
         treemap.putAll(map);
         System.out.println(treemap);
@@ -156,7 +155,5 @@ public class GradesApplication {
             System.out.println(currentStudent.getName());
             System.out.println(currentStudent.getGrades());
         }
-
-
     }
 }
