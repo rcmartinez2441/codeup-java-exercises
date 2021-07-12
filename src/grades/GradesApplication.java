@@ -47,7 +47,43 @@ public class GradesApplication {
         printStudentInfo(donkey);
         printStudentInfo(raul);
 
-        System.out.println(jeff.getRandomGrades());
+
+        //Create the command line interface
+        //
+        //Print the list of GitHub usernames out to the console, and ask the user which student they would like to see more information about. The user should enter a GitHub username (i.e. one of the keys in your map). If the given input does not match up with a key in your map, tell the user that no users with that username were found. If the given username does exist, display information about that student, including their name and their grades.
+        //
+        //After the information is displayed, the application should ask the user if they want to continue, and keep running so long as the answer is yes.
+
+        /*
+        Welcome!
+
+        Here are the GitHub usernames of our students:
+
+        |zgulde| |ryanorsinger| |jreich5| |fmendozaro| |MontealegreLuis|
+
+        What student would you like to see more information on?
+
+        > pizza
+
+        Sorry, no student found with the GitHub username of "pizza".
+
+        Would you like to see another student?
+
+        > y
+
+        What student would you like to see more information on?
+
+        > zgulde
+
+        Name: Zach - GitHub Username: zgulde
+        Current Average: 87.4
+
+        Would you like to see another student?
+
+        > no
+
+        Goodbye, and have a wonderful day!
+         */
     }
 
     public static void addStudent( HashMap<String, Student> currentHashmap, String username, String studentName){
@@ -64,16 +100,5 @@ public class GradesApplication {
         System.out.println("------------------------------------");
     }
 
-    //***What do you think is working
-    // Lectures work very well with understanding curriculum subjects especially after reading ahead and being lost while reading it
-    //Allowing for open discussion and elaborating on questions answered helps alot
-
-
-    //***What is what we can improve on
-    //Sometimes the curriculum instructions are unclear or confusing which makes it difficult to find out if I am doing the exercises correctly or not
-    //Wish that the curriculum gave more examples
-
-
-    //Ideas for Solutions
 
 }
