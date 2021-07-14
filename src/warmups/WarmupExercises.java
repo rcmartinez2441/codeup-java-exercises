@@ -3,12 +3,12 @@ package warmups;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public  class ArrayWarmup {
+public  class WarmupExercises {
     private String[] vacationSpots = new String[] {};
     private Scanner scanner = new Scanner(System.in);
 
 
-    public ArrayWarmup() {
+    public WarmupExercises() {
         addVacationSpot(scanner);
     }
     public String listFavoriteVacSpots () {
@@ -32,6 +32,14 @@ public  class ArrayWarmup {
             System.out.println("Thanks for your Input");
             System.out.println( listFavoriteVacSpots() );
         }
+    }
+
+    //warmup: write a method that accepts a string and returns a String array that splits at the spaces - you can write this within any main method\
+
+    public String[] stringToArray (String string){
+        String[] array = string.split(" ");
+        System.out.println(Arrays.toString(array));
+        return array;
     }
 }
 // TODO: Create a method which will return a String[] containing the user's favorite vacation spots

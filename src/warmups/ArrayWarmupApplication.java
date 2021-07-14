@@ -1,9 +1,10 @@
 package warmups;
 
-import warmups.ArrayWarmup;
 
 public class ArrayWarmupApplication {
     public static void main(String[] args) {
-        ArrayWarmup vacationSpots = new ArrayWarmup();
+        WarmupExercises vacationSpots = new WarmupExercises();
+
+        vacationSpots.stringToArray("Testing to see if this works");
     }
 }
