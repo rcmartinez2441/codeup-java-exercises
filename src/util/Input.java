@@ -1,5 +1,7 @@
 package util;
 
+import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
@@ -37,18 +39,30 @@ public class Input {
             return false;
         }
     }
+
     public void setMinMaxInt(int min, int max) {
         this.minInt = min;
         this.maxInt = max;
     }
 
-    public void setMinMaxDouble (double min, double max){
+    public void setMinMaxDouble(double min, double max) {
         this.minDouble = min;
         this.maxDouble = max;
     }
+
     public int getInt() { //replaced parameter with private fields that can only be set calling the setters
+        int typedNumber;
         System.out.printf("Type a Number Between %s and %s\n", minInt, maxInt);
-        int typedNumber = Integer.parseInt(userInput());
+
+        try {
+            typedNumber = Integer.valueOf(userInput());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println(Arrays.toString(e.getStackTrace()));
+            throw new NumberFormatException("Not An Integer Idiot");
+        }
+
+//        typedNumber = Integer.parseInt(userInput());
         if (typedNumber < minInt || typedNumber > maxInt) {
             System.out.println("That is out of range, please: ");
             getInt();
@@ -59,16 +73,23 @@ public class Input {
         return typedNumber;
     }
 
-    public int getInt (String prompt){
+    public int getInt(String prompt) {
         System.out.println(prompt);
-        int typedNumber = Integer.parseInt(userInput());
+        int typedNumber = Integer.valueOf(userInput());
         System.out.println("You Typed: " + typedNumber);
         return typedNumber;
     }
 
-    public double getDouble(){
+    public double getDouble() {
         System.out.printf("Type a Number Between %s and %s\n", minDouble, maxDouble);
-        double typedNumber = Double.parseDouble(userInput());
+        double typedNumber;
+        try {
+            typedNumber = Double.valueOf(userInput());
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            throw new NumberFormatException("Not a Valid Double");
+        }
+//        double typedNumber = Double.parseDouble(userInput());
         if (typedNumber < minDouble || typedNumber > maxDouble) {
             System.out.println("That is out of range, please: ");
             getDouble();
@@ -79,7 +100,7 @@ public class Input {
         return typedNumber;
     }
 
-    public double getDouble(String prompt){
+    public double getDouble(String prompt) {
         System.out.println(prompt);
         double typedNumber = Double.parseDouble(userInput());
         System.out.println("You Typed: " + typedNumber);
