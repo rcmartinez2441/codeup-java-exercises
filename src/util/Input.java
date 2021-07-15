@@ -75,6 +75,11 @@ public class Input {
 
     public int getInt(String prompt) {
         System.out.println(prompt);
+        try {
+            int typedNumber = Integer.valueOf(userInput());
+        } catch (NumberFormatException e) {
+            System.out.println("Not Valid Input");
+        }
         int typedNumber = Integer.valueOf(userInput());
         System.out.println("You Typed: " + typedNumber);
         return typedNumber;
