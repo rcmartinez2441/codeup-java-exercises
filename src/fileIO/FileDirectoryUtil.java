@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+
+//Job is to try to get paths and try to create Directories and Files
 public class FileDirectoryUtil {
     public static Path getPath(String fileName) {
         return Paths.get(fileName);
