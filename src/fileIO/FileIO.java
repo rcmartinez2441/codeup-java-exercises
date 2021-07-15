@@ -1,5 +1,6 @@
 package fileIO;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -8,7 +9,7 @@ public class FileIO {
         init();
     }
 
-    public static void init () {
+    public static void init() {
 
         Path path = FileDirectoryUtil.getPath("src", "fileIO", "files");
         //Try to create a directory
@@ -20,10 +21,9 @@ public class FileIO {
 
         //print out final location of file
         System.out.println(path.toAbsolutePath());
+
+       IOUtil.tryPrintContents(path);
     }
-
-
-
 
 
 
