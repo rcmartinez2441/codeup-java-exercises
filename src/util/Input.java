@@ -23,10 +23,10 @@ public class Input {
         return scanner.nextLine(); //Returns a string
     }
 
-    public String getString(String prompt) {
-        System.out.println(prompt);
+    public String getString(/*String prompt*/) {
+//        System.out.println(prompt);
         String input = userInput();
-        return "Here's you Input: " + input;
+        return input;
 
     }
 
@@ -51,11 +51,11 @@ public class Input {
     }
 
     public int getInt() { //replaced parameter with private fields that can only be set calling the setters
-        int typedNumber;
+        int typedNumber = 0;
         System.out.printf("Type a Number Between %s and %s\n", minInt, maxInt);
 
         try {
-            typedNumber = Integer.valueOf(userInput());
+            typedNumber = Integer.valueOf(getString());
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println(Arrays.toString(e.getStackTrace()));
@@ -75,12 +75,14 @@ public class Input {
 
     public int getInt(String prompt) {
         System.out.println(prompt);
+        int typedNumber = 0;
         try {
-            int typedNumber = Integer.valueOf(userInput());
+            typedNumber = Integer.valueOf(getString());
+            System.out.println(typedNumber);
         } catch (NumberFormatException e) {
             System.out.println("Not Valid Input");
         }
-        int typedNumber = Integer.valueOf(userInput());
+//        int typedNumber = Integer.valueOf(userInput());
         System.out.println("You Typed: " + typedNumber);
         return typedNumber;
     }
@@ -89,7 +91,7 @@ public class Input {
         System.out.printf("Type a Number Between %s and %s\n", minDouble, maxDouble);
         double typedNumber;
         try {
-            typedNumber = Double.valueOf(userInput());
+            typedNumber = Double.valueOf(getString());
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
             throw new NumberFormatException("Not a Valid Double");

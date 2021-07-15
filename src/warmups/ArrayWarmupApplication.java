@@ -19,10 +19,14 @@ public class ArrayWarmupApplication {
         //  message.
         //**Method comes from WarmupExercises.java
 
-        WarmupExercises warmupExercise = new WarmupExercises();
+//        WarmupExercises warmupExercise = new WarmupExercises();
+//
+//        warmupExercise.printRandomCharacter("Oberon is the best cohort ever");
 
-        warmupExercise.printRandomCharacter("Oberon is the best cohort ever");
 
+        Input test = new Input();
+
+        test.getInt("test");
 
 
 

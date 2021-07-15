@@ -4,7 +4,7 @@ public class InputTest {
         Input inputJava = new Input(); //Creates a new scanner when a new instance is called
 
         //Using getString();
-        String getString = inputJava.getString("Enter a String");
+        String getString = inputJava.getString();
         System.out.println( getString );
 
         Boolean yesNo = inputJava.yesNo("Yes / No?");
