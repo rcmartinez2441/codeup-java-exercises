@@ -1,14 +1,16 @@
 package warmups;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
-public  class WarmupExercises {
-    private String[] vacationSpots = new String[] {};
+public class WarmupExercises {
+    private String[] vacationSpots = new String[]{};
     private Scanner scanner = new Scanner(System.in);
 
 
-//    public WarmupExercises() {
+    //    public WarmupExercises() {
 //        addVacationSpot(scanner);
 //    }
 //    public String listFavoriteVacSpots () {
@@ -30,10 +32,10 @@ public  class WarmupExercises {
 //  -> When the user decides to finish inputting spots, return the String[].
 //  -> sout out the returned value!
 
-    public void addVacationSpot (Scanner scanner) {
+    public void addVacationSpot(Scanner scanner) {
         System.out.println("Add a Vacation Spot (Type 'quit' to stop adding): ");
         String userInput = scanner.nextLine().toUpperCase();
-        if (!userInput.startsWith("Q")){
+        if (!userInput.startsWith("Q")) {
             String[] updateCopy = Arrays.copyOf(vacationSpots, vacationSpots.length + 1);
             updateCopy[vacationSpots.length] = userInput;
             vacationSpots = updateCopy;
@@ -46,7 +48,7 @@ public  class WarmupExercises {
 
     //warmup: write a method that accepts a string and returns a String array that splits at the spaces - you can write this within any main method\
 
-    public String[] stringToArray (String string){
+    public String[] stringToArray(String string) {
         String[] array = string.split(" ");
         System.out.println(Arrays.toString(array));
         return array;
@@ -62,19 +64,41 @@ public  class WarmupExercises {
     //  message.
 
 
-    public void printRandomCharacter (String string){
-        int randomNumber = (int) Math.floor(Math.random()*51);
-        System.out.println( string );
-        System.out.println( randomNumber );
+    public void printRandomCharacter(String string) {
+        int randomNumber = (int) Math.floor(Math.random() * 51);
+        System.out.println(string);
+        System.out.println(randomNumber);
         try {
-            System.out.println( string.charAt(randomNumber) );
-        } catch (StringIndexOutOfBoundsException e){
+            System.out.println(string.charAt(randomNumber));
+        } catch (StringIndexOutOfBoundsException e) {
             System.out.println("Random Number out of Range");
-            for(StackTraceElement line : e.getStackTrace()){
+            for (StackTraceElement line : e.getStackTrace()) {
                 System.out.println(line);
             }
             printRandomCharacter(string);
         }
+    }
+
+    //Write a method named getTwentyPrimes() that returns a string containing the first 20 prime numbers, each separated by a comma. Output: "1, 2, 3, 5, 7, 11, 13, 17, 19"... until we have a total count of 20 primes in the string.
+    public void getTwentyPrimes() {
+        System.out.println("test");
+        List<Integer> primes = new ArrayList<>();
+        for (int i = 0; primes.size() < 20; i++) {
+            if (!(i % 2 == 0)) {
+                primes.add(i);
+            }
+        }
+
+        String allPrimes = "";
+        for (Integer prime : primes) {
+            if (primes.get(primes.size()-1).equals(prime)) {
+                allPrimes += prime;
+            } else {
+                allPrimes += prime + ", ";
+            }
+        }
+
+        System.out.println(allPrimes);
     }
 }
 
